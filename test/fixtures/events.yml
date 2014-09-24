@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  distinct_id: MyString
+  event: MyString
+  time: MyString
+
+two:
+  distinct_id: MyString
+  event: MyString
+  time: MyString

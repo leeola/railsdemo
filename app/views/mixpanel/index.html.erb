@@ -1,0 +1,41 @@
+<h1>Mixpanel View Events</h1>
+<p>
+  The following data is being served from a PostgreSQL database,
+  and is the stored response from Mixpanel. The data represents
+  how many times the "User viewed page" event was called,
+  on the given date.
+<p>
+  The events themselves are tracked by Mixpanel. Each time the page
+  loads, a Mixpanel Event is sent. When you click the button,
+  Ruby requests information about these events and stores it in
+  PostgreSQL. And on each page load, all of the PostgreSQL records are
+  rendered.
+</p>
+<p>
+  The majority of this code can be seen by opening the file
+  located at <strong>app/controllers/mixpanel_controller.rb</strong>.
+</p>
+<p>
+  To populate the database additional events from Mixpanel,
+  press the button below.
+</p>
+
+<form action="" method="POST">
+  <input type="submit" value="Pull Some Data from Mixpanel">
+  <input name="authenticity_token" 
+                 type="hidden" 
+                 value="<%= form_authenticity_token %>"/>
+</form>
+
+<pre><code>
+<% if @events.count === 0 %>
+ No records in PostgreSQL, Press the above button to pull some
+ events from Mixpanel.
+<% else %>
+ Total Records in PostgreSQL: <%= @events.count %>
+<% end %>
+
+<% @events.each do |event| %>
+ Event:<%= event.event %>, Date:<%= event.time %>, Count:<%= event.count %>
+<% end %>
+</code></pre>
