@@ -67,7 +67,7 @@ Settings](http://take.ms/G6w2n).
 
 If you're unfamiliar with Database Setup, Heroku has a zero installation 
 Postgres database that you can use. Simply signup at 
-[heroku.com](heroku.com) and visit your [Database 
+[heroku.com](http://heroku.com) and visit your [Database 
 Settings](https://postgres.heroku.com/databases). From there, create a 
 database and enter the connection settings into the Database 
 Configuration step above. Don't forget use the Host that they supplied.
