@@ -63,6 +63,60 @@ Then open your browser and connect to your VM Address. You can find this
 by clicking on the link located in your [VM 
 Settings](http://take.ms/G6w2n).
 
+## Installing your own Postgres Server
+
+Run the following command in your Koding Terminal to install PostgreSQL.
+
+```
+sudo apt-get install postgresql
+```
+
+After that, you'll need to create a user for Rails to loginto Postgres 
+with. Run the following commands..
+
+```
+sudo su - postgres
+psql
+```
+
+You'll now be in the Postgres Prompt. Run the following command, 
+replacing `DATABASE_USER` and `DATABASE_PASS` with whatever login 
+information you want.
+
+```
+create role DATABASE_USER with createdb login password 'DATABASE_PASS';
+```
+
+**NOTE**: Your username should be all lowercase.
+
+Now open up a new Terminal, and head to your rails installation folder 
+from above. Locate the `config/database.yaml` file, and open it up. It 
+should look like the following:
+
+```
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: DATABASE_NAME
+  pool: 5
+  username: DATABASE_USER
+  password: DATABASE_PASS
+  host: DATABASE_HOST
+```
+
+Replace the host with `localhost`, the user/pas information with what you 
+created above, and the database name as whatever you want to create.
+
+After that, in the rails project directory, type the following command.
+
+```
+rake db:setup
+```
+
+This will create the DB, and tables/etc. After that, simply run your 
+rails server with the above instructions!
+
+
 ## Using Postgres as a Service
 
 If you're unfamiliar with Database Setup, Heroku has a zero installation 
